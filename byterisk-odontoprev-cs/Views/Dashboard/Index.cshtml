@@ -1,0 +1,69 @@
+@model byterisk_odontoprev_cs.Presentation.ViewModels.DashboardViewModel
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <div class="container mt-4">
+        <h2>Dashboard</h2>
+        <p>Bem-vindo à Dashboard!</p>
+        
+        <!-- Widgets de Estatísticas -->
+        <div class="row mt-4">
+            <div class="col-md-4">
+                <div class="card text-white bg-primary mb-3">
+                    <div class="card-header">Prevenções</div>
+                    <div class="card-body">
+                        <h5 class="card-title">@Model.TotalPreventions</h5>
+                        <p class="card-text">Prevenções realizadas este mês</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card text-white bg-success mb-3">
+                    <div class="card-header">Intervenções</div>
+                    <div class="card-body">
+                        <h5 class="card-title">@Model.TotalInterventions</h5>
+                        <p class="card-text">Intervenções executadas</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card text-white bg-warning mb-3">
+                    <div class="card-header">Sinistro Reduzido</div>
+                    <div class="card-body">
+                        <h5 class="card-title">R$ @Model.TotalSinisterReduction.ToString("N0")</h5>
+                        <p class="card-text">Valor total de sinistros reduzido</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mensagens Recentes -->
+        <div class="row mt-4">
+            <div class="col-md-12">
+                <h3>Mensagens Recentes</h3>
+                <div class="list-group">
+                    @foreach (var message in Model.RecentMessages)
+                    {
+                        <a href="#" class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">@message.SenderName</h5>
+                                <small>@message.TimeElapsed</small>
+                            </div>
+                            <p class="mb-1">@message.Subject</p>
+                        </a>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/lib/jquery/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

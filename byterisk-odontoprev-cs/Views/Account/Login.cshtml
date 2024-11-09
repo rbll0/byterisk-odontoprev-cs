@@ -1,0 +1,106 @@
+@model byterisk_odontoprev_cs.Presentation.ViewModels.LoginViewModel
+@{ Layout = null; }
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #1e3a8a;
+            color: white;
+            margin: 0;
+        }
+        .background-banner {
+            background-color: #1e3a8a;
+            text-align: center;
+            padding: 2rem;
+            color: white;
+        }
+        .background-banner h1 {
+            font-weight: bold;
+            font-size: 2rem;
+        }
+        .background-banner p {
+            font-size: 1.1rem;
+            margin-top: 0.5rem;
+        }
+        .login-container {
+            background-color: white;
+            margin: 0 auto;
+            color: #1e3a8a;
+            padding: 2rem;
+            border-radius: 15px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+            margin-top: -2rem; /* Ajuste para aproximar do banner */
+        }
+        .login-header {
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+        .form-control {
+            border-radius: 25px;
+            padding-left: 2.5rem;
+            height: 45px;
+        }
+        .form-control-icon {
+            position: absolute;
+            left: 15px;
+            top: 10px;
+            color: #1e3a8a;
+        }
+        .btn-login {
+            width: 100%;
+            background-color: #1e3a8a;
+            border: none;
+            border-radius: 25px;
+            height: 45px;
+            font-weight: bold;
+            color: white;
+            margin-top: 1.5rem;
+        }
+        .btn-login:hover {
+            background-color: #3b5998;
+        }
+    </style>
+</head>
+<body>
+    <div class="background-banner">
+        <h1>Dashboard</h1>
+        <p>Faça o login para acessar a área administrativa.</p>
+    </div>
+
+    <div class="login-container">
+        <h2 class="login-header">Login</h2>
+        <form asp-action="Login" method="post">
+            <div class="form-group position-relative mt-4">
+                <label asp-for="Email" class="form-label d-none">Email</label>
+                <i class="bi bi-envelope form-control-icon"></i> <!-- Ícone de e-mail -->
+                <input asp-for="Email" class="form-control" placeholder="Email" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group position-relative mt-3">
+                <label asp-for="Password" class="form-label d-none">Senha</label>
+                <i class="bi bi-lock form-control-icon"></i> <!-- Ícone de senha -->
+                <input asp-for="Password" class="form-control" placeholder="Senha" type="password" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-login">Entrar</button>
+        </form>
+    </div>
+
+    <script src="~/lib/jquery/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
